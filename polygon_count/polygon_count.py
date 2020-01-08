@@ -6,6 +6,13 @@ import networkx as nx
 
 # helper functions
 
+def cart2pol(x, y):
+    rho = np.sqrt(x**2 + y**2)
+    phi = np.arctan2(y, x)
+    if phi<0.0:
+        phi=2*np.pi+phi
+    return(rho, phi)
+
 
 def proper_divs2(n):
     return {x for x in range(1, (n + 1) // 2 + 1) if n % x == 0 and n != x}
@@ -84,8 +91,15 @@ def polygon_count(A):
         for id, s in enumerate(A):
             if is_between(s[0], s[1], p):
                 l_passess.append(id)
-        if A[l_passess[0]][0][1] < A[l_passess[1]][0][1]:
+        a = np.asarray(A[l_passess[0]][0]) - np.asarray(p)
+        b = np.asarray(A[l_passess[1]][0]) - np.asarray(p)
+        ap = cart2pol(a[0], a[1])
+        bp = cart2pol(b[0], b[1])
+
+        if ap[1] > bp[1]:
+            # if A[l_passess[0]][0][1] < A[l_passess[1]][0][1]:
             l_passess[0], l_passess[1] = l_passess[1], l_passess[0]
+
         passess.append(l_passess)
 
     K = len(isects)
@@ -213,7 +227,6 @@ def show (A, ps, isects, G, Q, flags,count):
                 fig, ax = plt.subplots(nrows=nrows, ncols=ncols, sharex=True, sharey=True)
                 name = "Found " + str(le) + "-gons"
                 fig.canvas.set_window_title(name)
-                i = 0
                 for p in ps:
                     if len(p) is le:
                         for id, a in enumerate(A):
@@ -243,7 +256,7 @@ def show (A, ps, isects, G, Q, flags,count):
                     if len(p) is le:
                         lp = p.copy()
                         lp.append(p[0])
-                        ax.plot(l_isects[lp, 0], l_isects[lp, 1], lw=12 - i, alpha=0.5)
+                        ax.plot(l_isects[lp, 0], l_isects[lp, 1], lw=12, alpha=0.5)
                 name = "Found " + str(le) + "-gons"
                 fig.canvas.set_window_title(name)
                 plt.axis('off')
@@ -252,7 +265,7 @@ def show (A, ps, isects, G, Q, flags,count):
     if flags["graph"]:
         fig, ax = plt.subplots(nrows=1, ncols=1, sharex=True, sharey=True)
         # pos = nx.spring_layout(G)
-        pos = nx.planar_layout(G)
+        pos = nx.spring_layout(G)
         # nodes
         nx.draw_networkx_nodes(G, pos, node_size=1000)
         nx.draw_networkx_nodes(G, pos, node_size=1000, nodelist=Q, node_color="r")
