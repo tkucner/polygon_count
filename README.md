@@ -22,9 +22,14 @@ flags = {
 }
 pc.show(A, ps, isects, G, Q, flags,count)
 ```
+### Input segments
 ![Input lines and intersections](https://github.com/tkucner/polygon_count/blob/master/figures/input.png)
+### Found polygons:
+* 3-gons
 ![Found 3-gons](https://github.com/tkucner/polygon_count/blob/master/figures/3-gons.png)
+* 4-gons
 ![Found 4-gons](https://github.com/tkucner/polygon_count/blob/master/figures/4-gons.png)
+* 5-gons
 ![Found 5-gons](https://github.com/tkucner/polygon_count/blob/master/figures/5-gons.png)
 
 ## References
