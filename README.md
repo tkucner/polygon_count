@@ -22,7 +22,8 @@ flags = {
 }
 pc.show(A, ps, isects, G, Q, flags,count)
 ```
-![Input lines and intersections]()
+![Input lines and intersections](https://github.com/tkucner/polygon_count/blob/master/figures/input.png)
+
 
 ## References
  [1] Fink, M., Kumar, N., & Suri, S. (2016, August). Counting Fink, M., Kumar, N., & Suri, S. (2016, August). Counting Convex k-gons in an Arrangement of Line Segments. In CCCG (pp. 155-160)Convex k-gons in an Arrangement of Line Segments. In CCCG (pp. 155-160)
