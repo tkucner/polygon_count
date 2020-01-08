@@ -230,7 +230,6 @@ def show (A, ps, isects, G, Q, flags,count):
                 for p in ps:
                     if len(p) is le:
                         for id, a in enumerate(A):
-                            print(i, int(i / ncols), int(i % ncols))
                             ax[int(i / ncols)][int(i % ncols)].plot([a[0][0], a[1][0]], [a[0][1], a[1][1]], 'k')
                             ax[int(i / ncols)][int(i % ncols)].text(a[0][0], a[0][1], id)
                         for id, ip in enumerate(isects):
@@ -252,7 +251,6 @@ def show (A, ps, isects, G, Q, flags,count):
                     ax.plot(p[0], p[1], 'or')
                     ax.text(p[0], p[1], id)
                 for p in ps:
-                    print(p)
                     if len(p) is le:
                         lp = p.copy()
                         lp.append(p[0])

@@ -1,4 +1,4 @@
-from polygon_count import polygon_count as pc
+import polygon_count as pc
 
 A = [((0, 1), (13, 16)),
      ((13, 2), (0, 2)),
@@ -10,7 +10,7 @@ A = [((0, 1), (13, 16)),
 
 flags = {
     "input": True,
-    "graph": True,
+    "graph": False,
     "result": False,
     "verbose": True
 }
