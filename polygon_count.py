@@ -1,17 +1,20 @@
-import matplotlib.pyplot as plt
-import poly_point_isect
-import numpy as np
 import sys
+
+import matplotlib.pyplot as plt
 import networkx as nx
+import numpy as np
+
+import poly_point_isect
+
 
 # helper functions
 
 def cart2pol(x, y):
-    rho = np.sqrt(x**2 + y**2)
+    rho = np.sqrt(x ** 2 + y ** 2)
     phi = np.arctan2(y, x)
-    if phi<0.0:
-        phi=2*np.pi+phi
-    return(rho, phi)
+    if phi < 0.0:
+        phi = 2 * np.pi + phi
+    return (rho, phi)
 
 
 def proper_divs2(n):
@@ -196,7 +199,7 @@ def show (A, ps, isects, G, Q, flags,count):
                     if len(p) is le:
                         lp = p.copy()
                         lp.append(p[0])
-                        ax.plot(l_isects[lp, 0], l_isects[lp, 1], lw=12, alpha=0.5)
+                        ax.plot(l_isects[lp, 0], l_isects[lp, 1], lw=6, alpha=0.5)
                 name = "Found " + str(le) + "-gons"
                 fig.canvas.set_window_title(name)
                 ax.set_title(name)
@@ -227,7 +230,9 @@ def show (A, ps, isects, G, Q, flags,count):
                 fig, ax = plt.subplots(nrows=nrows, ncols=ncols, sharex=True, sharey=True)
                 name = "Found " + str(le) + "-gons"
                 fig.canvas.set_window_title(name)
+                i = 0
                 for p in ps:
+
                     if len(p) is le:
                         for id, a in enumerate(A):
                             ax[int(i / ncols)][int(i % ncols)].plot([a[0][0], a[1][0]], [a[0][1], a[1][1]], 'k')
@@ -237,7 +242,7 @@ def show (A, ps, isects, G, Q, flags,count):
                             ax[int(i / ncols)][int(i % ncols)].text(ip[0], ip[1], id)
                         lp = p.copy()
                         lp.append(p[0])
-                        ax[int(i / ncols)][int(i % ncols)].plot(l_isects[lp, 0], l_isects[lp, 1], lw=12 - i, alpha=0.5)
+                        ax[int(i / ncols)][int(i % ncols)].plot(l_isects[lp, 0], l_isects[lp, 1], lw=6, alpha=0.5)
                         ax[int(i / ncols)][int(i % ncols)].axis('off')
                         i = i + 1
                 plt.axis('off')
@@ -254,7 +259,7 @@ def show (A, ps, isects, G, Q, flags,count):
                     if len(p) is le:
                         lp = p.copy()
                         lp.append(p[0])
-                        ax.plot(l_isects[lp, 0], l_isects[lp, 1], lw=12, alpha=0.5)
+                        ax.plot(l_isects[lp, 0], l_isects[lp, 1], lw=6, alpha=0.5)
                 name = "Found " + str(le) + "-gons"
                 fig.canvas.set_window_title(name)
                 plt.axis('off')
